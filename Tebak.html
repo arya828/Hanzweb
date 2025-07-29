@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tebak Nama Hewan</title>
+	<style>
+		body {
+			background-color: #660033;
+			font-family: Arial, sans-serif;
+		}
+
+		#game-container {
+			width: 400px;
+			margin: 50px auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			background-color: #990033;
+			color: #fff;
+		}
+
+		#game-title {
+			font-size: 36px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+
+		.button {
+			width: 100px;
+			height: 40px;
+			margin: 5px;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			background-color: #ff0033;
+			color: #fff;
+			cursor: pointer;
+		}
+
+		.button:hover {
+			background-color: #ff0066;
+		}
+	</style>
+</head>
+<body>
+	<div id="game-container">
+		<h1 id="game-title">Tebak Nama Hewan</h1>
+		<p id="game-description">Saya akan memberikanmu deskripsi tentang seekor hewan. Tebak nama hewan tersebut!</p>
+		<p id="description"></p>
+		<input type="text" id="user-input" placeholder="Masukkan jawaban">
+		<button class="button" onclick="checkAnswer()">Cek Jawaban</button>
+		<p id="result"></p>
+	</div>
+
+	<script>
+		let description = document.getElementById("description");
+		let userInput = document.getElementById("user-input");
+		let result = document.getElementById("result");
+
+		let hewan = [
+			{ nama: "haikal", deskripsi: "Hewan herbivora besar yang memiliki belalai panjang dan gading." },
+			{ nama: "haikal", deskripsi: "Hewan karnivora kecil yang sering dipelihara sebagai hewan peliharaan." },
+			{ nama: "haikal", deskripsi: "Hewan karnivora yang setia dan sering dipelihara sebagai hewan peliharaan." },
+			{ nama: "haikal", deskripsi: "Hewan karnivora besar yang hidup di hutan dan dikenal sebagai predator yang kuat." },
+		];
+
+		let randomHewan = hewan[Math.floor(Math.random() * hewan.length)];
+		description.innerText = randomHewan.deskripsi;
+
+		function checkAnswer() {
+			let userAnswer = userInput.value.toLowerCase();
+			let hewanAnswer = randomHewan.nama.toLowerCase();
+			if (userAnswer === hewanAnswer) {
+				result.innerText = "Selamat! Jawabanmu benar!";
+			} else {
+				result.innerText = "Maaf, jawabanmu salah. Jawaban yang benar adalah " + randomHewan.nama;
+			}
+		}
+	</script>
+</body>
+</html>
